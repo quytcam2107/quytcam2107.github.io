@@ -1,415 +1,952 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Lưu Quyết</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  <title>Lưu Quyết</title>
-  <!--
-Reflux Template
-https://templatemo.com/tm-531-reflux
--->
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    :root {
+      --off: #f7f5f0;
+      --ink: #18120e;
+      --ink2: #5c4f44;
+      --coral: #ff5733;
+      --amber: #f59e0b;
+      --lime: #22c55e;
+      --sky: #0ea5e9;
+      --violet: #8b5cf6;
+      --pink: #ec4899;
+      --card: #ffffff;
+      --r: 16px;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --serif: 'Fraunces', serif;
+    }
 
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css" />
-  <link rel="stylesheet" href="assets/css/templatemo-style.css" />
-  <link rel="stylesheet" href="assets/css/owl.css" />
-  <link rel="stylesheet" href="assets/css/lightbox.css" />
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--off);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    /* ════ HERO ════ */
+    .hero {
+      background: linear-gradient(150deg, #fff8f0 0%, #fef3f8 40%, #f0f6ff 75%, #f2fff6 100%);
+      padding: 64px 24px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .b1 {
+      width: 420px;
+      height: 420px;
+      background: #ffc8a2;
+      opacity: .5;
+      top: -150px;
+      left: -100px;
+    }
+
+    .b2 {
+      width: 360px;
+      height: 360px;
+      background: #c4b5fd;
+      opacity: .4;
+      top: -80px;
+      right: -80px;
+    }
+
+    .b3 {
+      width: 300px;
+      height: 300px;
+      background: #a7f3d0;
+      opacity: .45;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Avatar */
+    .av-wrap {
+      position: relative;
+      width: 136px;
+      height: 136px;
+      margin: 0 auto 24px;
+    }
+
+    .av-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #ff5733, #ffb347, #7cdb5e, #4db8ff, #b06fff, #ff6eb4, #ff5733);
+      animation: spin 7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .av-body {
+      position: relative;
+      z-index: 1;
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 54px;
+      border: 4px solid #fff;
+      overflow: hidden;
+    }
+
+    .av-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .av-emoji {
+      line-height: 1;
+    }
+
+    .av-dot {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, .5);
+      animation: ping 2.2s infinite;
+    }
+
+    @keyframes ping {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, .5)
+      }
+
+      50% {
+        box-shadow: 0 0 0 9px rgba(34, 197, 94, 0)
+      }
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(38px, 9vw, 68px);
+      font-weight: 900;
+      line-height: 1.0;
+      margin-bottom: 10px;
+      background: linear-gradient(130deg, #ff5733 0%, #b06fff 55%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      color: var(--ink2);
+      margin-bottom: 16px;
+    }
+
+    .hero-bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink2);
+      max-width: 460px;
+      margin: 0 auto 28px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      justify-content: center;
+      margin-bottom: 44px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #fff;
+      border: 2px solid transparent;
+      transition: transform .22s, box-shadow .22s;
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .pill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .1);
+    }
+
+    .p-coral {
+      border-color: #ff5733;
+      color: #ff5733;
+    }
+
+    .p-amber {
+      border-color: #f59e0b;
+      color: #d97706;
+    }
+
+    .p-lime {
+      border-color: #22c55e;
+      color: #16a34a;
+    }
+
+    .p-sky {
+      border-color: #0ea5e9;
+      color: #0284c7;
+    }
+
+    .p-violet {
+      border-color: #8b5cf6;
+      color: #7c3aed;
+    }
+
+    .wave {
+      width: 100%;
+      display: block;
+      margin-bottom: -2px;
+    }
+
+    /* ════ MAIN ════ */
+    .main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+
+    /* Section header */
+    .s-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .s-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .s-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .s-sub {
+      font-size: 12px;
+      color: var(--ink2);
+      margin-top: 3px;
+    }
+
+    /* ── LANGUAGE CARDS ── */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .lcard {
+      background: #fff;
+      border-radius: var(--r);
+      padding: 28px 22px;
+      border: 2px solid #f0ebe4;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      cursor: default;
+    }
+
+    .lcard:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .1);
+      border-color: var(--c, #ff5733);
+    }
+
+    .lcard-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at 0% 0%, var(--c, #ff5733)18, transparent 60%);
+      opacity: .07;
+    }
+
+    .lc-em {
+      font-size: 34px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .lc-nm {
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .lc-dt {
+      font-size: 12px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    .lc-bg {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 4px 13px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--c, #ff5733);
+      color: #fff;
+      opacity: .85;
+    }
+
+    /* ── AI ── */
+    .ai-wrap {
+      background: linear-gradient(135deg, #fff7f0, #fdf4ff);
+      border-radius: 20px;
+      border: 2px solid #f5d6f0;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-bg-text {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: 90px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff5733, #b06fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: .07;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .ai-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ai-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #fff;
+      border-radius: 13px;
+      padding: 18px 20px;
+      border: 1.5px solid #ede8ff;
+    }
+
+    .ai-num {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff5733, #b06fff);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ai-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink2);
+    }
+
+    .ai-text strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* ── TAGS ── */
+    .tech-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tr-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tr-label::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, #e0d8d0, transparent);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #fff;
+      border: 2px solid #ede9e4;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+      transition: all .23s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .11);
+      border-color: var(--tc, #ff5733);
+      color: var(--tc, #ff5733);
+    }
+
+    .tdot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--tc, #ff5733);
+      flex-shrink: 0;
+    }
+
+    /* ── HOBBIES ── */
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .hcard {
+      background: #fff;
+      border-radius: 16px;
+      padding: 26px 14px;
+      text-align: center;
+      border: 2px solid #f0ebe4;
+      transition: all .28s;
+      cursor: default;
+    }
+
+    .hcard:hover {
+      border-color: var(--hc, #ff6eb4);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .09);
+    }
+
+    .hc-ic {
+      font-size: 32px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .hc-nm {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ── CONTACT ── */
+    .contact-strip {
+      background: linear-gradient(135deg, #ff5733, #b06fff, #0ea5e9);
+      border-radius: 22px;
+      padding: 44px 32px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cs-title {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .cs-sub {
+      font-size: 14px;
+      opacity: .85;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .cs-btn {
+      display: inline-block;
+      background: #fff;
+      color: #ff5733;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 14px 38px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .cs-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px 20px 44px;
+      font-size: 12px;
+      color: #b0a89e;
+    }
+
+    /* ════ REVEAL ════ */
+    .rv {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ════ RESPONSIVE ════ */
+    @media(max-width:640px) {
+      .hero {
+        padding: 48px 16px 0;
+      }
+
+      .av-wrap {
+        width: 110px;
+        height: 110px;
+      }
+
+      .av-body {
+        width: 110px;
+        height: 110px;
+        font-size: 44px;
+      }
+
+      .main {
+        padding: 40px 14px 60px;
+        gap: 40px;
+      }
+
+      .ai-wrap {
+        padding: 22px 18px;
+      }
+
+      .ai-bg-text {
+        display: none;
+      }
+
+      .lang-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-strip {
+        padding: 28px 20px;
+      }
+
+      .cs-title {
+        font-size: 22px;
+      }
+
+      .pills {
+        gap: 7px;
+      }
+
+      .pill {
+        font-size: 11px;
+        padding: 6px 13px;
+      }
+    }
+
+    @media(max-width:360px) {
+      .lang-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hobby-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="page-wraper">
-    <!-- Sidebar Menu -->
-    <div class="responsive-nav">
-      <i class="fa fa-bars" id="menu-toggle"></i>
-      <div id="menu" class="menu">
-        <i class="fa fa-times" id="menu-close"></i>
-        <div class="container">
-          <div class="image">
-            <a href="#"><img src="assets/images/avt.jpg" alt="" /></a>
-          </div>
-          <div class="author-content">
-            <h4>LIU VAN QUYET</h4>
-            <span>BACKEND DEVELOPER</span>
-          </div>
-          <nav class="main-nav" role="navigation">
-            <ul class="main-menu">
-              <li><a href="#section1">About Me</a></li>
-              <!-- <li><a href="#section2">What I’m good at</a></li> -->
-              <li><a href="#section3">My Work</a></li>
-              <!-- <li><a href="#section4">Contact Me</a></li> -->
-            </ul>
-          </nav>
-          <div class="social-network">
-            <ul class="soial-icons">
-              <li>
-                <a href="https://www.facebook.com/quat2107/"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/quyt.cam_2107/"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
-              </li>
-              <li>
-                <!-- <a href="#"><i class="fa fa-dribbble"></i></a> -->
-              </li>
-              <li>
-                <!-- <a href="#"><i class="fa fa-rss"></i></a> -->
-              </li>
-            </ul>
-          </div>
-          <div class="copyright-text">
-            <p>Copyright 2019 Reflux Design</p>
-          </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="hero-inner">
+
+      <div class="av-wrap">
+        <div class="av-ring"></div>
+        <div class="av-body">
+          <!-- Thay src="" bằng link ảnh thật của bạn, ví dụ src="https://..." -->
+          <img src="" alt="avatar" id="av-img" />
+          <span class="av-emoji" id="av-emoji">👨‍💻</span>
         </div>
+        <div class="av-dot" title="Sẵn sàng nhận dự án"></div>
+      </div>
+
+      <h1 class="hero-name">Lưu Quyết</h1>
+      <p class="hero-role">Full‑Stack Developer &nbsp;·&nbsp; Backend Specialist</p>
+      <p class="hero-bio">
+        Lập trình viên với đam mê xây dựng sản phẩm thực sự hữu ích.
+        Thích giải quyết bài toán phức tạp và tích hợp AI vào phần mềm thực tế.
+      </p>
+
+      <div class="pills">
+        <div class="pill p-coral">🚀 5+ năm kinh nghiệm</div>
+        <div class="pill p-amber">🤖 AI Integration</div>
+        <div class="pill p-lime">🗃️ Database Expert</div>
+        <div class="pill p-sky">☁️ Backend & DevOps</div>
+        <div class="pill p-violet">⚡ Open to work</div>
       </div>
     </div>
 
-    <section class="section about-me" data-section="section1">
-      <div class="container">
-        <div class="section-heading">
-          <h2>About Me</h2>
-          <div class="line-dec"></div>
-          <span>
-            Hello! I'm Liu Van Quyet, a dedicated backend developer with a passion for crafting robust and scalable
-            solutions. With 2 years of experience in software development, I specialize in building efficient
-            server-side applications and APIs that power dynamic web applications.
-          </span>
-        </div>
-        <div class="left-image-post">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="left-image">
-                <img src="assets/images/left-image.jpg" alt="" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="right-text">
-                <h4>Key Strengths
-
-                </h4>
-                <p>
-                  <strong>Backend Technologies: Proficient in PHP/Laravel</strong>
-                  <br>
-                  <strong>Database Management: Experienced in designing and optimizing databases using Mysql to ensure
-                    data integrity and performance.</strong>
-                  <strong>Problem-Solving Skills: Adept at troubleshooting and resolving backend-related issues
-                    efficiently.</strong>
-                </p>
-                <div class="white-button">
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="right-image-post">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="left-text">
-                <h4>Career Objective</h4>
-                <p>
-                  My goal is to continue sharpening my backend development skills while contributing to innovative
-                  projects that push the boundaries of technology. I am passionate about leveraging emerging
-                  technologies and best practices to create scalable and maintainable backend solutions that meet the
-                  evolving needs of users and businesses.
-                </p>
-                <div class="white-button">
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="right-image">
-                <img src="assets/images/right-image.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section class="section my-services" data-section="section2">
-      <div class="container">
-        <div class="section-heading">
-          <h2>What I’m good at?</h2>
-          <div class="line-dec"></div>
-          <span>Curabitur leo felis, rutrum vitae varius eu, malesuada a tortor.
-            Vestibulum congue leo et tellus aliquam, eu viverra nulla semper.
-            Nullam eu faucibus diam. Donec eget massa ante.</span>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="service-item">
-              <div class="first-service-icon service-icon"></div>
-              <h4>HTML5 &amp; CSS3</h4>
-              <p>
-                Phasellus non convallis dolor. Integer tempor hendrerit arcu
-                at bibendum. Sed ac ante non metus vehicula congue quis eget
-                eros.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="service-item">
-              <div class="second-service-icon service-icon"></div>
-              <h4>Creative Ideas</h4>
-              <p>
-                Proin lacus massa, eleifend sed fermentum in, dignissim vel
-                metus. Nunc accumsan leo nec felis porttitor, ultricies
-                faucibus purus mollis.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="service-item">
-              <div class="third-service-icon service-icon"></div>
-              <h4>Easy Customize</h4>
-              <p>
-                Integer suscipit condimentum aliquet. Nam quis risus metus.
-                Nullam faucibus quam eget arcu pretium tincidunt. Nam libero
-                dui.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="service-item">
-              <div class="fourth-service-icon service-icon"></div>
-              <h4>Admin Dashboard</h4>
-              <p>
-                Vivamus et dui a massa venenatis fringilla. Proin lacus massa,
-                eleifend sed fermentum in, dignissim vel metus. Nunc accumsan
-                leo nec felis porttitor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <section class="section my-work" data-section="section3">
-      <div class="container">
-        <div class="section-heading">
-          <h2>My Work</h2>
-          <div class="line-dec"></div>
-          <span>Aenean sollicitudin ex mauris, lobortis lobortis diam euismod sit
-            amet. Duis ac elit vulputate, lobortis arcu quis, vehicula
-            mauris.</span>
-        </div>
-        <div class="row">
-          <div class="isotope-wrapper">
-            <form class="isotope-toolbar">
-              <label><input type="radio" data-type="*" checked="" name="isotope-filter" />
-                <span>all</span></label>
-              <!-- <label
-                  ><input
-                    type="radio"
-                    data-type="people"
-                    name="isotope-filter"
-                  />
-                  <span>people</span></label
-                > -->
-              <!-- <label><input type="radio" data-type="nature" name="isotope-filter" />
-                <span>nature</span></label> -->
-              <!-- <label><input type="radio" data-type="animals" name="isotope-filter" />
-                <span>animals</span></label> -->
-            </form>
-            <div class="isotope-box">
-              <div class="isotope-item" data-type="nature">
-                <figure class="snip1321">
-                  <img src="assets/images/gk_3.png" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/gk_3.png" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>GK EDUCATION TECHNOLOGY JOINT STOCK COMPANY</h4>
-                    <!-- <span>GK EDUCATION TECHNOLOGY JOINT STOCK COMPANY</span> -->
-                  </figcaption>
-                </figure>
-              </div>
-
-              <div class="isotope-item" data-type="people">
-                <figure class="snip1321">
-                  <img src="assets/images/hachinet_2.png" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/hachinet_2.png" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>HACHINET VIET NAM SOLUTION TRADING JOINT STOCK COMPANY</h4>
-                    <!-- <span>please tell your friends</span> -->
-                  </figcaption>
-                </figure>
-              </div>
-
-              <!-- <div class="isotope-item" data-type="animals">
-                <figure class="snip1321">
-                  <img src="assets/images/portfolio-03.jpg" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/portfolio-03.jpg" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>Item Third</h4>
-                    <span>customize anything</span>
-                  </figcaption>
-                </figure>
-              </div> -->
-
-              <!-- <div class="isotope-item" data-type="people">
-                <figure class="snip1321">
-                  <img src="assets/images/portfolio-04.jpg" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/portfolio-04.jpg" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>Item Fourth</h4>
-                    <span>Re-distribution not allowed</span>
-                  </figcaption>
-                </figure>
-              </div> -->
-
-              <!-- <div class="isotope-item" data-type="nature">
-                <figure class="snip1321">
-                  <img src="assets/images/portfolio-05.jpg" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/portfolio-05.jpg" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>Fifth Awesome</h4>
-                    <span>Ut sollicitudin risus</span>
-                  </figcaption>
-                </figure>
-              </div> -->
-
-              <!-- <div class="isotope-item" data-type="animals">
-                <figure class="snip1321">
-                  <img src="assets/images/portfolio-06.jpg" alt="sq-sample26" />
-                  <figcaption>
-                    <a href="assets/images/portfolio-06.jpg" data-lightbox="image-1" data-title="Caption"><i
-                        class="fa fa-search"></i></a>
-                    <h4>Awesome Sixth</h4>
-                    <span>Donec eget massa ante</span>
-                  </figcaption>
-                </figure>
-              </div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section class="section contact-me" data-section="section4">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Contact Me</h2>
-          <div class="line-dec"></div>
-          <span>Fusce eget nibh nec justo interdum condimentum. Morbi justo ex,
-            efficitur at ante ac, tincidunt maximus ligula. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit.</span>
-        </div>
-        <div class="row">
-          <div class="right-content">
-            <div class="container">
-              <form id="contact" action="" method="post">
-                <div class="row">
-                  <div class="col-md-6">
-                    <fieldset>
-                      <input name="name" type="text" class="form-control" id="name" placeholder="Your name..."
-                        required="" />
-                    </fieldset>
-                  </div>
-                  <div class="col-md-6">
-                    <fieldset>
-                      <input name="email" type="text" class="form-control" id="email" placeholder="Your email..."
-                        required="" />
-                    </fieldset>
-                  </div>
-                  <div class="col-md-12">
-                    <fieldset>
-                      <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..."
-                        required="" />
-                    </fieldset>
-                  </div>
-                  <div class="col-md-12">
-                    <fieldset>
-                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..."
-                        required=""></textarea>
-                    </fieldset>
-                  </div>
-                  <div class="col-md-12">
-                    <fieldset>
-                      <button type="submit" id="form-submit" class="button">
-                        Send Message
-                      </button>
-                    </fieldset>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
+    <svg class="wave" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,48 C480,0 960,90 1440,36 L1440,72 L0,72 Z" fill="#f7f5f0" />
+    </svg>
   </div>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- MAIN -->
+  <div class="main">
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/lightbox.js"></script>
-  <script src="assets/js/custom.js"></script>
+    <!-- 1. NGÔN NGỮ -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#fff5f0">💻</div>
+        <div>
+          <div class="s-title">Ngôn ngữ lập trình</div>
+          <div class="s-sub">Các ngôn ngữ tôi sử dụng hằng ngày</div>
+        </div>
+      </div>
+      <div class="lang-grid">
+        <div class="lcard" style="--c:#f97316">
+          <div class="lcard-glow"></div>
+          <span class="lc-em">🐘</span>
+          <div class="lc-nm">PHP</div>
+          <div class="lc-dt">Laravel · CodeIgniter<br />MVC, Artisan, Eloquent ORM</div>
+          <span class="lc-bg">Backend</span>
+        </div>
+        <div class="lcard" style="--c:#f59e0b">
+          <div class="lcard-glow"></div>
+          <span class="lc-em">☕</span>
+          <div class="lc-nm">Java</div>
+          <div class="lc-dt">OOP · Spring Boot<br />RESTful Services</div>
+          <span class="lc-bg">Backend</span>
+        </div>
+        <div class="lcard" style="--c:#3b82f6">
+          <div class="lcard-glow"></div>
+          <span class="lc-em">🌐</span>
+          <div class="lc-nm">JavaScript</div>
+          <div class="lc-dt">jQuery · Ajax<br />VueJS · ReactJS</div>
+          <span class="lc-bg">Frontend</span>
+        </div>
+        <div class="lcard" style="--c:#ec4899">
+          <div class="lcard-glow"></div>
+          <span class="lc-em">🎨</span>
+          <div class="lc-nm">HTML / CSS</div>
+          <div class="lc-dt">Semantic · Responsive<br />Animations & Layouts</div>
+          <span class="lc-bg">Frontend</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AI -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#fdf4ff">🤖</div>
+        <div>
+          <div class="s-title">Kỹ năng AI</div>
+          <div class="s-sub">Ứng dụng AI để tăng tốc và nâng chất lượng</div>
+        </div>
+      </div>
+      <div class="ai-wrap">
+        <div class="ai-bg-text">AI ✦</div>
+        <div class="ai-list">
+          <div class="ai-item">
+            <div class="ai-num">01</div>
+            <div class="ai-text">Sử dụng thành thạo công cụ AI hỗ trợ code <strong>Cursor, ChatGPT-4o</strong> để tối ưu
+              hóa tốc độ lập trình và nâng cao chất lượng code mỗi ngày.</div>
+          </div>
+          <div class="ai-item">
+            <div class="ai-num">02</div>
+            <div class="ai-text">Tích hợp các mô hình ngôn ngữ lớn <strong>(LLMs)</strong> thông qua API vào hệ thống
+              Backend — xây dựng tính năng thông minh cho sản phẩm thực tế.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DATABASE -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#f0fff4">🗃️</div>
+        <div>
+          <div class="s-title">Cơ sở dữ liệu</div>
+          <div class="s-sub">Quản lý, tối ưu và vận hành dữ liệu</div>
+        </div>
+      </div>
+      <div class="tech-block">
+        <div>
+          <div class="tr-label">Hệ quản trị CSDL</div>
+          <div class="tags">
+            <div class="tag" style="--tc:#f97316">
+              <div class="tdot"></div>MySQL
+            </div>
+            <div class="tag" style="--tc:#0ea5e9">
+              <div class="tdot" style="background:#0ea5e9"></div>SQL Server
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="tr-label">Kỹ thuật nâng cao</div>
+          <div class="tags">
+            <div class="tag" style="--tc:#22c55e">
+              <div class="tdot" style="background:#22c55e"></div>Stored Procedures
+            </div>
+            <div class="tag" style="--tc:#22c55e">
+              <div class="tdot" style="background:#22c55e"></div>Views
+            </div>
+            <div class="tag" style="--tc:#22c55e">
+              <div class="tdot" style="background:#22c55e"></div>Triggers
+            </div>
+            <div class="tag" style="--tc:#22c55e">
+              <div class="tdot" style="background:#22c55e"></div>Tối ưu truy vấn
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BACKEND -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#fefce8">⚙️</div>
+        <div>
+          <div class="s-title">Backend & Hệ thống</div>
+          <div class="s-sub">Kiến trúc và xây dựng hệ thống hiệu suất cao</div>
+        </div>
+      </div>
+      <div class="tags">
+        <div class="tag" style="--tc:#8b5cf6">
+          <div class="tdot" style="background:#8b5cf6"></div>Microservices
+        </div>
+        <div class="tag" style="--tc:#8b5cf6">
+          <div class="tdot" style="background:#8b5cf6"></div>API Gateway
+        </div>
+        <div class="tag" style="--tc:#8b5cf6">
+          <div class="tdot" style="background:#8b5cf6"></div>RESTful API
+        </div>
+        <div class="tag" style="--tc:#ec4899">
+          <div class="tdot" style="background:#ec4899"></div>RabbitMQ
+        </div>
+        <div class="tag" style="--tc:#ec4899">
+          <div class="tdot" style="background:#ec4899"></div>Message Queue
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. DEVOPS -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#eff6ff">🛠️</div>
+        <div>
+          <div class="s-title">Công cụ & Triển khai</div>
+          <div class="s-sub">DevOps và vận hành hệ thống thực tế</div>
+        </div>
+      </div>
+      <div class="tags">
+        <div class="tag" style="--tc:#2496ed">
+          <div class="tdot" style="background:#2496ed"></div>🐳 Docker
+        </div>
+        <div class="tag" style="--tc:#009900">
+          <div class="tdot" style="background:#009900"></div>Nginx
+        </div>
+        <div class="tag" style="--tc:#d84924">
+          <div class="tdot" style="background:#d84924"></div>Apache
+        </div>
+        <div class="tag" style="--tc:#f05032">
+          <div class="tdot" style="background:#f05032"></div>Git
+        </div>
+        <div class="tag" style="--tc:#dd4814">
+          <div class="tdot" style="background:#dd4814"></div>Ubuntu
+        </div>
+        <div class="tag" style="--tc:#932279">
+          <div class="tdot" style="background:#932279"></div>CentOS
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PM TOOLS -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#f0f9ff">📋</div>
+        <div>
+          <div class="s-title">Quản lý công việc</div>
+          <div class="s-sub">Làm việc chuyên nghiệp trong môi trường Agile</div>
+        </div>
+      </div>
+      <div class="tags">
+        <div class="tag" style="--tc:#0052cc">
+          <div class="tdot" style="background:#0052cc"></div>Jira
+        </div>
+        <div class="tag" style="--tc:#b32024">
+          <div class="tdot" style="background:#b32024"></div>Redmine
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. HOBBIES -->
+    <section class="rv">
+      <div class="s-head">
+        <div class="s-icon" style="background:#fdf4ff">✨</div>
+        <div>
+          <div class="s-title">Sở thích</div>
+          <div class="s-sub">Những điều giúp tôi sáng tạo hơn mỗi ngày</div>
+        </div>
+      </div>
+      <div class="hobby-grid">
+        <div class="hcard" style="--hc:#f97316">
+          <span class="hc-ic">🎵</span>
+          <div class="hc-nm">Nghe nhạc</div>
+        </div>
+        <div class="hcard" style="--hc:#0ea5e9">
+          <span class="hc-ic">✈️</span>
+          <div class="hc-nm">Du lịch</div>
+        </div>
+        <div class="hcard" style="--hc:#22c55e">
+          <span class="hc-ic">💡</span>
+          <div class="hc-nm">Công nghệ mới</div>
+        </div>
+        <div class="hcard" style="--hc:#8b5cf6">
+          <span class="hc-ic">📚</span>
+          <div class="hc-nm">Đọc sách</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT -->
+    <section class="rv">
+      <div class="contact-strip">
+        <div class="cs-title">Hãy cùng hợp tác! 🚀</div>
+        <p class="cs-sub">Tôi luôn sẵn sàng đón nhận cơ hội mới, dự án thú vị<br />hoặc đơn giản là một cuộc trò chuyện
+          về công nghệ.</p>
+        <a href="mailto:your@email.com" class="cs-btn">✉️ &nbsp;Liên hệ ngay</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>© 2026 Lưu Quyết — Crafted with ❤️ &amp; Me</footer>
+
   <script>
-    //according to loftblog tut
-    $(".main-menu li:first").addClass("active");
-
-    var showSection = function showSection(section, isAnimate) {
-      var direction = section.replace(/#/, ""),
-        reqSection = $(".section").filter(
-          '[data-section="' + direction + '"]'
-        ),
-        reqSectionPos = reqSection.offset().top - 0;
-
-      if (isAnimate) {
-        $("body, html").animate(
-          {
-            scrollTop: reqSectionPos
-          },
-          800
-        );
-      } else {
-        $("body, html").scrollTop(reqSectionPos);
-      }
-    };
-
-    var checkSection = function checkSection() {
-      $(".section").each(function () {
-        var $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-        if (topEdge < wScroll && bottomEdge > wScroll) {
-          var currentId = $this.data("section"),
-            reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-          reqLink
-            .closest("li")
-            .addClass("active")
-            .siblings()
-            .removeClass("active");
-        }
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 80);
       });
-    };
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-    $(".main-menu").on("click", "a", function (e) {
-      e.preventDefault();
-      showSection($(this).attr("href"), true);
-    });
+    // Avatar fallback
+    const img = document.getElementById('av-img');
+    const emo = document.getElementById('av-emoji');
+    img.onload = () => { if (img.naturalWidth) { img.style.display = 'block'; emo.style.display = 'none'; } };
+    img.onerror = () => { img.style.display = 'none'; emo.style.display = 'block'; };
 
-    $(window).scroll(function () {
-      checkSection();
+    // Stagger lang cards on load
+    document.querySelectorAll('.lcard').forEach((c, i) => {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(18px)';
+      c.style.transition = `opacity .5s ${i * 100 + 300}ms ease, transform .5s ${i * 100 + 300}ms ease, border-color .3s, box-shadow .3s, transform .3s`;
+      setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, 300 + i * 100);
     });
   </script>
 </body>
